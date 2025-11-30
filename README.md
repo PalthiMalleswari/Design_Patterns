@@ -2,4 +2,7 @@
 Practice Design Patterns 
 
 # Resources
-Bugfree - https://bugfree.ai/practice/system-design
+RecfactorGuru - https://refactoring.guru/design-patterns/catalog
+
+Bugfree(System Design Practice) - https://bugfree.ai/practice/system-design
+
