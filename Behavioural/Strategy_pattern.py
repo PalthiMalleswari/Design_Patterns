@@ -343,5 +343,57 @@ response = service.process_payment(request)
 
 print(response)
 
+# ========================= Text Formatter Task ========================
+
+"""
+Build a text formatting system where different strategies format text in different ways. The TextEditor context should allow swapping formatters at runtime,
+so the same editor can produce uppercase, lowercase, or title case output depending on the active strategy.
+"""
+
+from abc import ABC, abstractmethod
+
+
+class TextFormatter(ABC):
+    @abstractmethod
+    def format(self, text: str) -> str:
+        pass
+
+
+class UpperCaseFormatter(TextFormatter):
+    def format(self, text: str) -> str:
+        return text.upper()
+
+
+class LowerCaseFormatter(TextFormatter):
+    def format(self, text: str) -> str:
+        return text.lower()
+
+
+class TitleCaseFormatter(TextFormatter):
+    def format(self, text: str) -> str:
+        return text.title()
+
+
+class TextEditor:
+    def __init__(self, formatter: TextFormatter):
+        self._formatter = formatter
+
+    def set_formatter(self, formatter: TextFormatter):
+        self._formatter = formatter
+
+    def publish_text(self, text: str):
+        print(self._formatter.format(text))
+
+
+if __name__ == "__main__":
+    # pass
+    editor = TextEditor(UpperCaseFormatter())
+    editor.publish_text("hello world from strategy pattern")
+
+    editor.set_formatter(LowerCaseFormatter())
+    editor.publish_text("Hello World From Strategy Pattern")
+
+    editor.set_formatter(TitleCaseFormatter())
+    editor.publish_text("hello world from strategy pattern")
 
         
